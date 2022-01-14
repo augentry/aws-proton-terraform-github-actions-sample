@@ -72,6 +72,10 @@ on:
         description: 'Deployment id for current run provided in proton deployment metadata file'
         required: true
         type: string
+      state_bucket:
+        description: 'Bucket to store generated state files'
+        required: true
+        type: string
 
 jobs:
   terraform:
