@@ -11,5 +11,11 @@ schema:
         vpc_name:
           type: string
           description: "Name for vpc"
+        az:
+          type: string
+          description: "The az you want your environment to deployed to, e.g. us-east-1a"
+          minLength: 1
+          maxLength: 30
       required:
         - vpc_name
+        - az
