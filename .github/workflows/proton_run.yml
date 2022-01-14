@@ -22,6 +22,7 @@ jobs:
       working-directory: ${{ steps.get-data.outputs.working-directory }}
       deployment-id: ${{ steps.get-data.outputs.deployment-id }}
       aws_region: ${{ steps.get-data.outputs.aws_region }}
+      state_bucket: ${{ steps.get-data.outputs.state_bucket }}
     
     permissions:
       id-token: write
@@ -122,4 +123,4 @@ jobs:
       working_directory: ${{ needs.get-deployment-data.outputs.working-directory }}
       deployment_id: ${{ needs.get-deployment-data.outputs.deployment-id }}
       aws_region: ${{ needs.get-deployment-data.outputs.aws_region }}
-      state_bucket: "my-proton-terraform-state-bucket"
+      state_bucket: ${{ needs.get-deployment-data.outputs.state_bucket }}
