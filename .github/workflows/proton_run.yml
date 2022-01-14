@@ -7,9 +7,8 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'env_config.json'
-      - 'sample-templates/**'
+    paths:
+      - '**/.proton/deployment-metadata.json'
 
 jobs:
   get-deployment-data:
