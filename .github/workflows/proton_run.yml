@@ -54,7 +54,7 @@ jobs:
             echo "::set-output name=deployment-metadata-path::$changed_file"
           fi
         done
-        if [[ "$found" == true ]]; then
+        if [[ "$found" == false ]]; then
           echo "No change made to deployment-metadata.json, exiting"
         fi
     
