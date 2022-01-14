@@ -56,6 +56,7 @@ jobs:
         done
         if [[ "$found" == false ]]; then
           echo "No change made to deployment-metadata.json, exiting"
+          exit 0
         fi
     
     - name: Get data
