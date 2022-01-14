@@ -46,7 +46,7 @@ jobs:
             echo "found file"
             if [[ "$found" == true ]]; then
               echo "More than one resource found to have a new deployment, I'm not sure which one to update, exiting."
-              exit 0
+              exit 1
             fi
             echo "setting found to true"
             found=true
@@ -56,7 +56,7 @@ jobs:
         done
         if [[ "$found" == false ]]; then
           echo "No change made to deployment-metadata.json, exiting"
-          exit 0
+          exit 1
         fi
     
     - name: Get data
