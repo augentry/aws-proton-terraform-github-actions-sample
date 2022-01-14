@@ -58,7 +58,6 @@ on:
       aws_region:
         description: 'AWS region'
         required: false
-        default: 'us-west-2'
         type: string
       working_directory:
         description: 'Directory containining the terraform code to run'
@@ -119,7 +118,7 @@ jobs:
     #######################################################
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init -backend-config="bucket=${{ inputs.state_bucket }}" -backend-config="key=${{ inputs.working_directory }}terraform.tfstate" -backend-config="region=us-west-2"
+      run: terraform init -backend-config="bucket=${{ inputs.state_bucket }}" -backend-config="key=${{ inputs.working_directory }}terraform.tfstate" -backend-config="region=${{ inputs.aws_region }}"
       continue-on-error: true
 
     # Checks that all Terraform configuration files adhere to a canonical format
