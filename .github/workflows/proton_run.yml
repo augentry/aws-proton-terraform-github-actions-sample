@@ -109,3 +109,4 @@ jobs:
       working_directory: ${{ needs.get-deployment-data.outputs.working-directory }}
       deployment_id: ${{ needs.get-deployment-data.outputs.deployment-id }}
       aws_region: ${{ needs.get-deployment-data.outputs.aws_region }}
+      state_bucket: "my-proton-terraform-state-bucket"
