@@ -99,7 +99,7 @@ jobs:
       continue-on-error: true
     
     - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@6938fd4d98bab03faadb97b34396831e3780aea1
+      uses: aws-actions/configure-aws-credentials@9aaa1daa91b40ce855e24cd45fb39b2ca18aeaf1
       with:
         aws-region: ${{ inputs.aws_region }}
         role-to-assume: ${{ inputs.role_arn }}
