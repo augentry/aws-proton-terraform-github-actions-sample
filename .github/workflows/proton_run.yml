@@ -90,6 +90,12 @@ jobs:
 
           working_directory=pipeline/$service_name
         fi
+        
+        if [[ $(jq -r --arg env $environment_name 'has($env)' env_config.json) = "false" ]]; then
+          echo "Missing $env from env_config.json, existing"
+          exit 0
+        fi
+        
         echo "::set-output name=working-directory::$working_directory"
         echo "::set-output name=environment::$environment_name"
         
@@ -98,6 +104,10 @@ jobs:
 
         aws_region=$(jq -r --arg env $environment_name '.[$env]["region"]' env_config.json)
         echo "::set-output name=aws_region::$aws_region"
+        
+        
+        state_bucket=$(jq -r --arg env $environment_name '.[$env]["state_bucket"]' env_config.json)
+        echo "::set-output name=state_bucket::$state_bucket"
     
   call-terraform-workflow:
     needs: get-deployment-data
