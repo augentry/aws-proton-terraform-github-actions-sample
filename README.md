@@ -1,4 +1,4 @@
-## Terraform OpenSource GitHub Actions automation template for AWS Proton TEST
+## Terraform OpenSource GitHub Actions automation template for AWS Proton
 
 Welcome! This repository should help you test how Proton works with Terraform Open Source to provision your infrastructure. In this repository you will find three things:
 
@@ -30,7 +30,7 @@ aws cloudformation create-stack --stack-name aws-proton-terraform-role-stack \
 7. Take the sample template and create a Proton environment template by following the instructions [here](https://docs.aws.amazon.com/proton/latest/adminguide/template-create.html). Make sure to replace `TEMPLATE_BUCKET` with the name of the bucket in which you would like to store your Proton templates.
 ```
 tar -zcvf sample-vpc-environment-template.tar.gz sample-templates/sample-vpc-environment-template/
-aws s3 cp sample-vpc-environment-template.tar.gz s3://your-s3-bucket/sample-vpc-environment-template.tar.gz --region REGION
+aws s3 cp sample-vpc-environment-template.tar.gz s3://TEMPLATE_BUCKET/sample-vpc-environment-template.tar.gz --region REGION
 rm sample-vpc-environment-template.tar.gz
 
 aws proton create-environment-template --name "sample-vpc-environment-template"
