@@ -30,31 +30,31 @@ aws cloudformation create-stack --stack-name aws-proton-terraform-role-stack \
 7. Take the sample template and create a Proton environment template by following the instructions [here](https://docs.aws.amazon.com/proton/latest/adminguide/template-create.html). Make sure to replace `TEMPLATE_BUCKET` with the name of the bucket in which you would like to store your Proton templates.
 ```
 tar -zcvf sample-vpc-environment-template.tar.gz sample-templates/sample-vpc-environment-template/
-aws s3 cp sample-vpc-environment-template.tar.gz s3://TEMPLATE_BUCKET/sample-vpc-environment-template.tar.gz --region REGION
+aws s3 cp sample-vpc-environment-template.tar.gz s3://TEMPLATE_BUCKET/sample-vpc-environment-template.tar.gz
 rm sample-vpc-environment-template.tar.gz
 
 aws proton create-environment-template --name "sample-vpc-environment-template"
 aws proton create-environment-template-version \
         --template-name sample-vpc-environment-template \
         --description "Sample template for setting up a Pull Request environment" \
-        --source s3="{bucket=TEMPLATE_BUCKET, key=sample-vpc-environment-template.tar.gz}"
+        --source s3="{bucket=TEMPLATE_BUCKET, key=sample-vpc-environment-template.tar.gz}" \
         --region REGION
 aws proton update-environment-template-version \
         --template-name "sample-vpc-environment-template" \
         --major-version "1" \
         --minor-version "0" \
-        --status "PUBLISHED"
+        --status "PUBLISHED" \
         --region REGION
 ```
 7. Register your repository with Proton by following the instructions [here](https://docs.aws.amazon.com/proton/latest/adminguide/ag-create-repo.html) 
 8. Deploy your environment in Proton by following the instructions [here](https://docs.aws.amazon.com/proton/latest/adminguide/ag-create-env.html#ag-create-env-pull-request). Change `GITHUB_USER` to be name of the GitHub account with the forked repository.
 ```
  aws proton create-environment \
-        --name "pr-environment" \
+        --name "sample-vpc-environment" \
         --template-name "sample-vpc-environment-template" \
         --template-major-version "1" \
-        --provisioning-repository="branch=main,name=GITHUB_USER/aws-proton-terraform-github-actions-sample,provider=GITHUB"
-        --spec file:///$PWD/example_schema.txt
+        --provisioning-repository="branch=main,name=GITHUB_USER/aws-proton-terraform-github-actions-sample,provider=GITHUB" \
+        --spec file:///$PWD/specs/env-spec.yml
 ```
 9. Shortly after you trigger the deployment, come back to your repository to see the Pull Request. Once you merge it, you can go back to Proton and see the updated status of your newly created environment
 
