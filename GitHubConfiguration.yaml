@@ -39,7 +39,6 @@ Resources:
 
   StateFileBucket:
     # This bucket will be used to store your Terraform Open Source state files
-    # Enter the bucket name in your .github/workflows/terraform.yml file
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Ref "AWS::StackName"
