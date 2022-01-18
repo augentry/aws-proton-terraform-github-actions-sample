@@ -41,8 +41,9 @@ Resources:
     # This bucket will be used to store your Terraform Open Source state files
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Ref "AWS::StackName"
-
+      BucketName: !Join
+       - 'aws-proton-terraform-bucket'
+       - !Ref AWS::AccountId
 Outputs:
   Role:
     Description: "The role that will be used to provision infrastructure. Enter it in your env_config.json file"
