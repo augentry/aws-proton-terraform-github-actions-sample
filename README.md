@@ -15,7 +15,8 @@ You will need the following:
 - `GITHUB_USER`: A GitHub account with which you can fork this repository
 
 1. Fork this repository into your GitHub account
-1. Ensure you have a CodeStar Connection set up for the account into which you
+2. We will be using Github Actions to deploy our Terraform template, and notify Proton of the deployment status. You can see the steps of our workflow in [proton_run.yml](https://github.com/aws-samples/aws-proton-terraform-github-actions-sample/blob/main/.github/workflows/proton_run.yml) and [terraform.yml](https://github.com/aws-samples/aws-proton-terraform-github-actions-sample/blob/main/.github/workflows/terraform.yml). Forked repositories do not have Actions enabled by default, see [this page](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) for information on how to enable them.
+3. Ensure you have a CodeStar Connection set up for the account into which you
    forked the repo in the previous step. For information on how to set that up see [this documentation](https://docs.aws.amazon.com/dtconsole/latest/userguide/connections-create.html).
 3. Run GitHubConfiguration.yaml through CloudFormation (https://aws.amazon.com/cloudformation/). This will create a role that GitHub Actions will use to provision resources into your account, as well as an S3 bucket to store Terraform Open Source state files. Make sure you use all lowercase names in the stack name, as we will use it to create an S3 bucket to save your state files.
 ```
@@ -50,7 +51,7 @@ aws proton update-environment-template-version \
 8. Deploy your environment in Proton by following the instructions [here](https://docs.aws.amazon.com/proton/latest/adminguide/ag-create-env.html#ag-create-env-pull-request). Change `GITHUB_USER` to be name of the GitHub account with the forked repository.
 ```
  aws proton create-environment \
-        --name "sample-vpc-environment" \
+        --name "ENVIRONMENT_NAME" \
         --template-name "sample-vpc-environment-template" \
         --template-major-version "1" \
         --provisioning-repository="branch=main,name=GITHUB_USER/aws-proton-terraform-github-actions-sample,provider=GITHUB" \
