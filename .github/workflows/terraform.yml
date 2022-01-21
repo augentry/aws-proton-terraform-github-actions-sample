@@ -136,7 +136,7 @@ jobs:
     - name: Terraform Apply
       id: tf_apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: terraform apply -auto-approve
+      run: terraform apply -auto-approve -var="aws_region=${{ inputs.aws_region }}"
       continue-on-error: true
 
     # This is a temporary measure until we have launched
