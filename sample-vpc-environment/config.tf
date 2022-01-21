@@ -20,3 +20,6 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {}
 
+data "aws_region" {
+  provider = "aws"
+}
