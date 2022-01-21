@@ -1,7 +1,6 @@
 Parameters:
   FullRepoName:
     Type: String
-    Default: augentry/aws-proton-terraform-github-actions-sample
 
 Resources:
   Role:
