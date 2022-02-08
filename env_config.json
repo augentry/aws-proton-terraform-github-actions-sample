@@ -4,4 +4,9 @@
         "region": "us-east-1",
         "state_bucket":"aws-proton-terraform-bucket615044489287"
     }
+    "sample-vpc-environment-2": {
+        "role": "arn:aws:iam::615044489287:role/ExampleGithubRole",
+        "region": "us-east-1",
+        "state_bucket":"aws-proton-terraform-bucket615044489287"
+    }
 }
